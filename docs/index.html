@@ -232,9 +232,8 @@
       <div class="sub">住民基本台帳 2010–2025</div>
     </div>
     <div class="legend">
-      <div class="row"><div class="swatch pos"></div>転入超過</div>
-      <div class="row"><div class="swatch neg"></div>転出超過</div>
-      <div class="row" style="color:var(--mute);margin-top:4px;font-size:.65rem">外周バー＝純転入出超の絶対値</div>
+      <div class="row"><div class="swatch pos"></div>転入超過<div class="swatch neg" style="margin-left:12px"></div>転出超過</div>
+      <div class="row" style="color:var(--mute);margin-top:4px;font-size:.65rem">バーの高さ：純転出入数</div>
     </div>
     <div id="detail-host">
       <div class="placeholder">都道府県をホバーすると<br>詳細が表示されます</div>
@@ -617,14 +616,15 @@
     const mxIn=Math.max(...insSorted.map(x=>x[1]),1);
     const mxOut=Math.max(...outsSorted.map(x=>x[1]),1);
     const fmt=v=>(isNet&&v>0?'+':'')+v.toLocaleString();
-    const li=insSorted.map(([oi,v])=>`<div class="flow-row"><div class="bar pos" style="width:${100*v/mxIn}%"></div><div class="content"><span>${PREFS[oi]} <span style="color:#888">→</span></span><span class="v">${fmt(v)}</span></div></div>`).join('');
-    const lo=outsSorted.map(([di,v])=>`<div class="flow-row"><div class="bar neg" style="width:${100*v/mxOut}%"></div><div class="content"><span><span style="color:#888">→</span> ${PREFS[di]}</span><span class="v">${fmt(v)}</span></div></div>`).join('');
+    const li=insSorted.map(([oi,v])=>`<div class="flow-row"><div class="bar pos" style="width:${100*v/mxIn}%"></div><div class="content"><span>${PREFS[oi]}<span style="color:#888">→</span>${name}</span><span class="v">${fmt(v)}</span></div></div>`).join('');
+    const lo=outsSorted.map(([di,v])=>`<div class="flow-row"><div class="bar neg" style="width:${100*v/mxOut}%"></div><div class="content"><span>${name}<span style="color:#888">→</span>${PREFS[di]}</span><span class="v">${fmt(v)}</span></div></div>`).join('');
     detailHost.innerHTML=`
       <div class="stat-box">
         <div class="stat-name">${name}</div>
-        <div class="stat-region">${reg}地方　${year}年</div>
-        <div class="net-big ${netCls}">${netStr}</div>
-        <div class="net-cap">${net>=0?'転入超過（純）':'転出超過（純）'}</div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:6px">
+          <div class="stat-region">${reg}地方　${year}年</div>
+          <div class="net-big ${netCls}" style="font-size:1.3rem">${netStr}</div>
+        </div>
         <div class="io-row">
           <div class="io-cell"><div class="io-cap">総流入</div><div class="io-val pos">${inSum.toLocaleString()}</div></div>
           <div class="io-cell"><div class="io-cap">総流出</div><div class="io-val neg">${outSum.toLocaleString()}</div></div>
