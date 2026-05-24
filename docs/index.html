@@ -22,23 +22,24 @@
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
   }
-  #app{display:grid;grid-template-columns:1fr 340px;height:100vh;width:100vw}
+  #app{display:grid;grid-template-columns:1fr 360px;height:100vh;width:100vw}
   #stage{position:relative;overflow:hidden}
   #panel{
     background:rgba(11,13,22,.72);
     border-left:.5px solid rgba(255,255,255,.08);
-    padding:24px 22px 20px;
-    display:flex;flex-direction:column;gap:14px;
+    padding:28px 24px 22px;
+    display:flex;flex-direction:column;gap:16px;
     backdrop-filter:saturate(180%) blur(20px);
     -webkit-backdrop-filter:saturate(180%) blur(20px);
     overflow-y:auto;
   }
-  /* ── タイトル & 凡例 ── */
-  .title{font-size:1.35rem;font-weight:700;letter-spacing:-.02em;color:#fff;line-height:1.2}
-  .sub{font-size:.78rem;color:rgba(235,235,245,.6);line-height:1.5;font-weight:400;letter-spacing:0;margin-top:2px}
-  .legend{display:flex;flex-direction:column;gap:6px;font-size:.74rem;color:rgba(235,235,245,.55);letter-spacing:0}
-  .legend .row{display:flex;align-items:center;gap:8px}
-  .swatch{width:24px;height:9px;border-radius:5px}
+  /* ── タイトル & 凡例（Apple HIG: Large Title 風） ── */
+  .panel-header{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-bottom:14px;border-bottom:.5px solid rgba(255,255,255,.07)}
+  .title{font-size:1.5rem;font-weight:700;letter-spacing:-.022em;color:#fff;line-height:1.15}
+  .sub{font-size:.72rem;color:rgba(235,235,245,.5);line-height:1.4;font-weight:400;letter-spacing:0;white-space:nowrap;text-align:right}
+  .legend{display:flex;flex-direction:column;gap:6px;font-size:.72rem;color:rgba(235,235,245,.5);letter-spacing:0;padding:0 2px}
+  .legend .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .swatch{width:22px;height:8px;border-radius:4px}
   .swatch.pos{background:linear-gradient(90deg,rgba(255,91,134,.2),var(--pos))}
   .swatch.neg{background:linear-gradient(90deg,rgba(62,203,255,.2),var(--neg))}
   .swatch.line{background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);height:2px;margin:3px 0}
@@ -168,9 +169,9 @@
   .flow-row .v{font-family:-apple-system,"SF Mono",monospace;color:rgba(235,235,245,.9);font-variant-numeric:tabular-nums;font-weight:500}
   .placeholder{
     flex:1;display:flex;align-items:center;justify-content:center;text-align:center;
-    color:rgba(235,235,245,.45);font-size:.85rem;line-height:1.7;
-    background:rgba(255,255,255,.04);border:none;
-    border-radius:14px;padding:32px 18px;font-weight:400;letter-spacing:0;
+    color:rgba(235,235,245,.42);font-size:.85rem;line-height:1.7;
+    background:rgba(255,255,255,.035);border:none;
+    border-radius:14px;padding:36px 20px;font-weight:400;letter-spacing:0;
   }
   /* スマホ用ヘッダー（PCでは非表示） */
   #mobile-header{display:none}
@@ -310,9 +311,9 @@
     </div>
   </div>
   <aside id="panel">
-    <div>
+    <div class="panel-header">
       <div class="title">都道府県間人口移動</div>
-      <div class="sub">住民基本台帳 2010–2025</div>
+      <div class="sub">住民基本台帳<br>2010–2025</div>
     </div>
     <div class="legend">
       <div class="row"><div class="swatch pos"></div>転入超過<div class="swatch neg" style="margin-left:12px"></div>転出超過<span style="margin-left:12px;color:var(--mute)">バーの高さ：純転出入数</span></div>
