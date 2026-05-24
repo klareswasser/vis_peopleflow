@@ -228,43 +228,43 @@
   .mode-toggle button:not(.active):hover{color:#fff}
   /* ── 詳細パネル ── */
   .stat-box{
-    background:rgba(255,255,255,.05);
+    padding:0;
+    margin-bottom:16px;
+    background:transparent;
     border:none;
-    border-radius:14px;
-    padding:16px 18px;
   }
-  .stat-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
-  .stat-head-l{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;min-width:0}
-  .stat-name{font-size:1.55rem;font-weight:600;letter-spacing:-.02em;color:#fff}
-  .stat-year-chip{font-size:.75rem;color:rgba(255,255,255,.9);background:rgba(255,255,255,.15);padding:3px 8px;border-radius:6px;letter-spacing:0;font-weight:500;white-space:nowrap}
+  .stat-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .stat-head-l{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0}
+  .stat-name{font-size:1.7rem;font-weight:600;letter-spacing:-.02em;color:#fff}
+  .stat-year-chip{font-size:.8rem;color:rgba(255,255,255,.9);background:rgba(255,255,255,.15);padding:3px 10px;border-radius:8px;font-weight:500;white-space:nowrap}
   .net-big{
     font-family:-apple-system,"SF Pro Display",sans-serif;
-    font-size:1.5rem;font-weight:600;letter-spacing:-.02em;
+    font-size:1.6rem;font-weight:600;letter-spacing:-.02em;
     font-variant-numeric:tabular-nums;white-space:nowrap;
   }
   .net-big.pos{color:var(--pos)}
   .net-big.neg{color:var(--neg)}
   .net-cap{font-size:.6rem;color:var(--mute);letter-spacing:.2em;margin-top:-2px}
-  .io-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-  .io-cell{background:rgba(255,255,255,.04);padding:9px 10px;border-radius:10px;text-align:center}
-  .io-cap{font-size:.68rem;color:rgba(235,235,245,.55);margin-bottom:3px;font-weight:400;letter-spacing:0}
-  .io-val{font-family:-apple-system,"SF Mono",monospace;font-size:1rem;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .io-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+  .io-cell{background:rgba(255,255,255,.05);padding:14px 16px;border-radius:12px;text-align:center}
+  .io-cap{font-size:.7rem;color:rgba(235,235,245,.6);margin-bottom:4px;font-weight:400;letter-spacing:0}
+  .io-val{font-family:-apple-system,"SF Mono",monospace;font-size:1.15rem;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
   .io-val.pos{color:var(--pos-d)}
   .io-val.neg{color:var(--neg-d)}
-  .flow-section{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px}
+  .flow-section{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px}
   .flow-section h4{
-    font-size:.72rem;color:rgba(235,235,245,.55);letter-spacing:0;font-weight:600;
-    display:flex;justify-content:space-between;padding:0 4px 6px;
-    border-bottom:.5px solid rgba(255,255,255,.08);
+    font-size:.75rem;color:rgba(235,235,245,.6);letter-spacing:0.02em;font-weight:600;
+    display:flex;justify-content:space-between;padding:12px 2px 6px;
+    border-bottom:1px solid rgba(255,255,255,.1);margin:0;
   }
   .flow-section h4.pos{color:var(--pos-d)}
   .flow-section h4.neg{color:var(--neg-d)}
-  .flow-list{display:flex;flex-direction:column;gap:1px;max-height:180px;overflow-y:auto;background:rgba(255,255,255,.03);border-radius:10px;padding:3px}
-  .flow-list::-webkit-scrollbar{width:12px}
+  .flow-list{display:flex;flex-direction:column;gap:3px;max-height:180px;overflow-y:auto;background:transparent;border-radius:0;padding:0}
+  .flow-list::-webkit-scrollbar{width:8px}
   .flow-list::-webkit-scrollbar-track{background:transparent}
-  .flow-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border:3px solid transparent;background-clip:padding-box;border-radius:999px}
-  .flow-list::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.25);border:3px solid transparent;background-clip:padding-box}
-  .flow-row{position:relative;font-size:.8rem;padding:7px 10px;border-radius:7px;overflow:hidden;cursor:default;letter-spacing:-.01em}
+  .flow-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border:2px solid transparent;background-clip:padding-box;border-radius:999px}
+  .flow-list::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.25);border:2px solid transparent;background-clip:padding-box}
+  .flow-row{position:relative;font-size:.85rem;padding:9px 12px;border-radius:8px;overflow:hidden;cursor:default;letter-spacing:-.01em;background:rgba(255,255,255,.02)}
   .flow-row .bar{position:absolute;left:0;top:0;bottom:0;opacity:.22}
   .flow-row .bar.pos{background:var(--pos)}
   .flow-row .bar.neg{background:var(--neg)}
@@ -272,8 +272,8 @@
   .flow-row .v{font-family:-apple-system,"SF Mono",monospace;color:rgba(235,235,245,.9);font-variant-numeric:tabular-nums;font-weight:500}
   .placeholder{
     flex:1;display:flex;align-items:center;justify-content:center;text-align:center;
-    color:rgba(235,235,245,.42);font-size:.85rem;line-height:1.7;
-    background:rgba(255,255,255,.035);border:none;
+    color:rgba(235,235,245,.45);font-size:.9rem;line-height:1.7;
+    background:rgba(255,255,255,.03);border:none;
     border-radius:14px;padding:36px 20px;font-weight:400;letter-spacing:0;
   }
   /* スマホ用ヘッダー（PCでは非表示） */
@@ -348,40 +348,34 @@
       line-height:1.6;letter-spacing:0;font-weight:400;
     }
     .sub{font-size:.78rem;color:rgba(235,235,245,.6)}
-    /* 詳細カード＝iOS グループドセル */
+    /* 詳細カード＝フラット */
     .stat-box{
-      background:rgba(255,255,255,.06);
+      background:transparent;
       border:none;
-      border-radius:14px;
-      padding:16px 18px;
+      padding:0;
+      margin-bottom:12px;
     }
     .stat-head{gap:8px}
     .stat-head-l{gap:8px}
     .stat-name{font-size:1.5rem;font-weight:600;letter-spacing:-.02em;color:#fff}
     .stat-year-chip{font-size:.75rem;padding:3px 8px;border-radius:6px;}
     .net-big{
-      font-family:-apple-system,"SF Pro Display",sans-serif !important;
-      font-size:1.35rem !important;font-weight:600;letter-spacing:-.02em;
-      font-variant-numeric:tabular-nums;
+      font-size:1.4rem !important;font-weight:600;letter-spacing:-.02em;
     }
     .io-row{gap:10px;margin-top:14px}
-    .io-cell{background:rgba(255,255,255,.05);padding:10px 8px;border-radius:10px}
-    .io-cap{font-size:.7rem;color:rgba(235,235,245,.55);letter-spacing:0;margin-bottom:4px;font-weight:400}
-    .io-val{font-family:-apple-system,"SF Mono",monospace;font-size:1.05rem;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-    /* フロー一覧＝iOS セクションヘッダー風 */
-    .flow-section{gap:8px;margin-top:4px}
+    .io-cell{background:rgba(255,255,255,.06);padding:12px 10px;border-radius:10px}
+    .io-cap{font-size:.7rem;margin-bottom:6px;}
+    .io-val{font-size:1.05rem;}
+    /* フロー一覧 */
+    .flow-section{gap:12px;margin-top:12px}
     .flow-section h4{
-      font-size:.74rem;color:rgba(235,235,245,.55);
-      letter-spacing:0;font-weight:600;text-transform:none;
-      padding:0 4px 6px;border-bottom:.5px solid rgba(255,255,255,.08);
+      font-size:.75rem;padding:8px 2px 6px;
     }
-    .flow-list{max-height:none;gap:1px;background:rgba(255,255,255,.04);border-radius:12px;padding:4px;overflow:hidden}
+    .flow-list{max-height:none;background:transparent;border-radius:0;padding:0;gap:3px;}
     .flow-row{
-      font-size:.92rem;padding:10px 12px;border-radius:8px;
-      background:transparent;letter-spacing:-.01em;
+      font-size:.9rem;padding:11px 12px;border-radius:8px;background:rgba(255,255,255,.02);
     }
-    .flow-row + .flow-row{border-top:.5px solid rgba(255,255,255,.04)}
-    .flow-row .v{font-family:-apple-system,"SF Mono",monospace;font-variant-numeric:tabular-nums;font-weight:500;color:rgba(235,235,245,.9)}
+    .flow-row + .flow-row{border-top:none}
     #controls{
       padding:10px 18px;gap:12px;bottom:12px;
       background:rgba(28,28,30,.72);
@@ -828,8 +822,8 @@
     const mxIn=Math.max(...insSorted.map(x=>x[1]),1);
     const mxOut=Math.max(...outsSorted.map(x=>x[1]),1);
     const fmt=v=>(isNet&&v>0?'+':'')+v.toLocaleString();
-    const li=insSorted.map(([oi,v])=>`<div class="flow-row"><div class="bar pos" style="width:${100*v/mxIn}%"></div><div class="content"><span>${PREFS[oi]}<span style="color:#888">→</span>${name}</span><span class="v">${fmt(v)}</span></div></div>`).join('');
-    const lo=outsSorted.map(([di,v])=>`<div class="flow-row"><div class="bar neg" style="width:${100*v/mxOut}%"></div><div class="content"><span>${name}<span style="color:#888">→</span>${PREFS[di]}</span><span class="v">${fmt(v)}</span></div></div>`).join('');
+    const li=insSorted.map(([oi,v])=>`<div class="flow-row"><div class="bar pos" style="width:${100*v/mxIn}%"></div><div class="content"><span>${PREFS[oi]}<span style="color:rgba(235,235,245,0.4);font-size:0.8em;margin:0 4px">→</span>${name}</span><span class="v">${fmt(v)}</span></div></div>`).join('');
+    const lo=outsSorted.map(([di,v])=>`<div class="flow-row"><div class="bar neg" style="width:${100*v/mxOut}%"></div><div class="content"><span>${name}<span style="color:rgba(235,235,245,0.4);font-size:0.8em;margin:0 4px">→</span>${PREFS[di]}</span><span class="v">${fmt(v)}</span></div></div>`).join('');
     detailHost.innerHTML=`
       <div class="stat-box">
         <div class="stat-head">
