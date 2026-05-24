@@ -421,7 +421,7 @@
   svg.append(gBgFlow,gHiFlow,gRegion,gNodes,gCenter);
 
   // 地域帯（外周の色バンド）+ ラベル + 間仕切り
-  const R_REG_IN  = R_INNER+R_BAR_MAX+(IS_MOBILE?155:58);   // 帯内側（pref ラベルより外）
+  const R_REG_IN  = R_INNER+R_BAR_MAX+(IS_MOBILE?155:82);   // 帯内側（pref ラベルより外）
   const R_REG_OUT = R_REG_IN+(IS_MOBILE?12:10);             // 帯外側
   const R_REG_LBL = R_REG_OUT+20;           // ラベル弧半径
   const R_DIV_IN  = R_INNER-2;              // 地域区切り内端
@@ -453,15 +453,19 @@
     const labelArcId=`region-arc-lbl-${reg.name}`;
     const aMid=(a1+a2)/2;
     const bottom = aMid > 0 && aMid < 180;
-    const large = (a2-a1) > 180 ? 1 : 0;
+    // テキストが見切れないように両端に余裕を持たせる（表示はされない透明なPathなので広く取ってOK）
+    const pad = 15;
+    const la1 = a1 - pad;
+    const la2 = a2 + pad;
+    const large = (la2-la1) > 180 ? 1 : 0;
     let labelD;
     if(bottom){
       const r = R_REG_LBL + 16;
-      const p1=xy(r,a2), p2=xy(r,a1);
+      const p1=xy(r,la2), p2=xy(r,la1);
       labelD = `M${p1.x.toFixed(1)},${p1.y.toFixed(1)} A${r},${r} 0 ${large} 0 ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
     } else {
       const r = R_REG_LBL;
-      const p1=xy(r,a1), p2=xy(r,a2);
+      const p1=xy(r,la1), p2=xy(r,la2);
       labelD = `M${p1.x.toFixed(1)},${p1.y.toFixed(1)} A${r},${r} 0 ${large} 1 ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
     }
     const labelArc=mk('path',{class:'region-arc',d:labelD,id:labelArcId});
