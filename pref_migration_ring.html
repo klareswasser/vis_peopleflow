@@ -31,9 +31,9 @@
     overflow-y:auto;
   }
   /* ── タイトル & 凡例 ── */
-  .title{font-size:1.16rem;font-weight:600;letter-spacing:.08em;color:#fff}
-  .sub{font-size:.77rem;color:var(--mute);line-height:1.44}
-  .legend{display:flex;flex-direction:column;gap:4px;font-size:.77rem;color:var(--mute);line-height:1.35}
+  .title{font-size:1.05rem;font-weight:600;letter-spacing:.08em;color:#fff}
+  .sub{font-size:.7rem;color:var(--mute);line-height:1.6}
+  .legend{display:flex;flex-direction:column;gap:4px;font-size:.7rem;color:var(--mute)}
   .legend .row{display:flex;align-items:center;gap:8px}
   .swatch{width:22px;height:8px;border-radius:2px}
   .swatch.pos{background:linear-gradient(90deg,rgba(255,91,134,.2),var(--pos))}
@@ -119,7 +119,6 @@
   .mode-toggle button.active{background:var(--accent);color:#000;font-weight:600}
   .mode-toggle button:not(.active):hover{color:#fff;background:rgba(255,255,255,.06)}
   /* ── 詳細パネル ── */
-  #detail-host{font-size:1.4em}
   .stat-box{
     background:rgba(255,255,255,.025);
     border:1px solid var(--line);
@@ -178,20 +177,29 @@
       position:sticky;top:0;z-index:10;
     }
     #mobile-header h1{
-      font-size:1.02rem;font-weight:600;letter-spacing:.08em;color:#fff;
-      margin:0 0 4px;line-height:1.3;
+      font-size:1rem;font-weight:600;letter-spacing:.04em;color:#fff;
+      margin:0 0 3px;line-height:1.3;
     }
     #mobile-header .mh-sub{
-      font-size:.66rem;color:var(--mute);letter-spacing:.06em;line-height:1.5;
+      font-size:.66rem;color:var(--mute);letter-spacing:.04em;line-height:1.5;
     }
     #mobile-header .mh-sub b{color:#fff;font-weight:600}
     #stage{height:100vw;min-height:0;aspect-ratio:1/1;padding:0}
     #stage svg{width:100%;height:100%}
-    #panel{max-height:none;border-left:none;border-top:1px solid var(--line);padding:16px 14px 14px;gap:10px}
+    #panel{max-height:none;border-left:none;border-top:1px solid var(--line);padding:14px 14px 16px;gap:10px}
     #panel > div:first-child{display:none} /* PC用タイトルをスマホでは隠す */
+    .legend{font-size:.7rem}
+    .legend .row{font-size:.7rem}
+    .placeholder{font-size:.75rem;padding:24px 16px}
     .sub{font-size:.65rem}
+    .stat-name{font-size:1.5rem}
+    .net-big{font-size:1.4rem !important}
+    .io-cap{font-size:.62rem}
+    .io-val{font-size:.95rem}
+    .flow-row{font-size:.78rem;padding:5px 8px}
+    .flow-section h4{font-size:.7rem}
     #controls{padding:8px 14px;gap:10px;bottom:10px}
-    .flow-list{max-height:200px}
+    .flow-list{max-height:none}
     .node-label{font-size:24px;letter-spacing:0;font-weight:500;pointer-events:auto;cursor:pointer}
     .node.hilite .node-label{font-size:27px}
     .region-label{display:none}
@@ -209,8 +217,8 @@
 <body>
 <div id="app">
   <header id="mobile-header">
-    <h1>都道府県間 人口移動 2010–2025</h1>
-    <div class="mh-sub">住民基本台帳人口移動報告　外周バー＝<b>転入超過｜転出超過</b>の絶対値</div>
+    <h1>都道府県間人口移動</h1>
+    <div class="mh-sub">住民基本台帳 2010–2025</div>
   </header>
   <div id="stage">
   <svg class="main" id="svg" viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid meet">
@@ -237,7 +245,7 @@
       <div class="row" style="color:var(--mute);margin-top:4px;font-size:.65rem">バーの高さ：純転出入数</div>
     </div>
     <div id="detail-host">
-      <div class="placeholder">都道府県をホバーすると<br>詳細が表示されます</div>
+      <div class="placeholder">都道府県を選択すると<br>詳細が表示されます</div>
     </div>
   </aside>
 </div>
@@ -601,7 +609,7 @@
 
   function showPlaceholder(){
     detailHost.innerHTML=`
-      <div class="placeholder">都道府県をホバーすると<br>詳細が表示されます</div>`;
+      <div class="placeholder">都道府県を選択すると<br>詳細が表示されます</div>`;
   }
 
   function showDetail(i, ins, outs, isNet){
