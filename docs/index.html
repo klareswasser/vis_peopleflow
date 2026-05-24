@@ -117,18 +117,7 @@
   .flow.anim.fast{ animation-duration:.9s; }
   /* ホバー中のハイライトフローは多めのダッシュと逆方向にしてレイヤーを達する
      “逆方向」のオフセットアニメを使うと origin→dest に見える */
-  /* トグルボタンでアニメOFFにするためのロークラス */
-  .no-anim .flow.anim{ animation:none; stroke-dasharray:none; }
-  /* アニメーショントグル */
-  .anim-toggle{
-    background:none;border:1px solid var(--line);color:var(--mute);
-    padding:6px 10px;font-size:.7rem;letter-spacing:.1em;cursor:pointer;
-    border-radius:14px;transition:.15s;font-family:inherit;
-    display:inline-flex;align-items:center;gap:6px;
-  }
-  .anim-toggle .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 6px var(--accent);transition:.2s}
-  .anim-toggle.off .dot{background:#444;box-shadow:none}
-  .anim-toggle:hover{color:#fff;border-color:var(--accent)}
+
   /* ── モード切替 ── */
   .mode-toggle{display:flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:rgba(0,0,0,.3)}
   .mode-toggle button{background:none;border:none;color:var(--mute);padding:6px 14px;font-size:.7rem;letter-spacing:.1em;cursor:pointer;transition:.15s;font-family:inherit}
@@ -219,7 +208,7 @@
     #mobile-header .mh-sub{font-size:.62rem}
     #year-display{font-size:1.15rem;min-width:56px}
     #year-display .y-sub{font-size:.5rem}
-    .anim-toggle{padding:5px 8px;font-size:.65rem}
+
     .node-label{font-size:26px}
     .node.hilite .node-label{font-size:29px}
   }
@@ -243,7 +232,7 @@
         <button data-mode="net" class="active">純流動</button>
         <button data-mode="gross">総量</button>
       </div>
-      <button class="anim-toggle" id="anim-toggle" title="流れアニメをON/OFF"><span class="dot"></span>FLOW</button>
+
     </div>
   </div>
   <aside id="panel">
@@ -680,13 +669,6 @@
   // モード切替（UIは非表示、純流動のみ）
   // 以前のスイッチャーイベントは削除
 
-  // アニメーション ON/OFF
-  const animBtn=document.getElementById('anim-toggle');
-  const stage=document.getElementById('stage');
-  animBtn.addEventListener('click',()=>{
-    const off=stage.classList.toggle('no-anim');
-    animBtn.classList.toggle('off',off);
-  });
 
   // ── スライダー ──
   slider.max=YEARS.length-1;
