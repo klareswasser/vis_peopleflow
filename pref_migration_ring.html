@@ -182,7 +182,8 @@
   @media (max-width:900px){
     body{overflow:auto}
     #app{grid-template-columns:1fr;grid-template-rows:auto auto;height:auto;min-height:100vh}
-    #stage{height:62vh;min-height:380px}
+    #stage{height:100vw;min-height:0;aspect-ratio:1/1;padding:0}
+    #stage svg{width:100%;height:100%}
     #panel{max-height:none;border-left:none;border-top:1px solid var(--line);padding:16px 14px 14px;gap:10px}
     .title{font-size:.95rem}
     .sub{font-size:.65rem}
@@ -194,7 +195,7 @@
     .region-label{display:none}
   }
   @media (max-width:480px){
-    #stage{height:58vh;min-height:340px}
+    #stage{height:100vw;min-height:0}
     #year-display{font-size:1.15rem;min-width:56px}
     #year-display .y-sub{font-size:.5rem}
     .anim-toggle{padding:5px 8px;font-size:.65rem}
@@ -308,11 +309,11 @@
     cursor+=1.6; // ギャップ
   });
 
-  // ジオメトリ（スマホでは内側を小さく、ラベルを外側へ）
+  // ジオメトリ（PC と同じリングサイズを維持し、スマホではラベルを外側へ）
   const IS_MOBILE = window.matchMedia('(max-width:900px)').matches;
-  const R_INNER = IS_MOBILE ? 230 : 300;     // 外周バーの内側
-  const R_BAR_MAX = IS_MOBILE ? 55 : 70;     // 最大バー高
-  const R_LABEL = R_INNER + R_BAR_MAX + (IS_MOBILE ? 14 : 18);
+  const R_INNER = 300;     // 外周バーの内側
+  const R_BAR_MAX = 70;    // 最大バー高
+  const R_LABEL = R_INNER + R_BAR_MAX + (IS_MOBILE ? 26 : 18);
   const R_FLOW = R_INNER - 6;// フロー終端
   const toRad=d=>d*Math.PI/180;
   const xy=(r,a)=>({x:r*Math.cos(toRad(a)), y:r*Math.sin(toRad(a))});
@@ -333,8 +334,8 @@
   svg.append(gBgFlow,gHiFlow,gRegion,gNodes,gCenter);
 
   // 地域帯（外周の色バンド）+ ラベル + 間仕切り
-  const R_REG_IN  = R_INNER+R_BAR_MAX+(IS_MOBILE?40:58);   // 帯内側（pref ラベルより外）
-  const R_REG_OUT = R_REG_IN+(IS_MOBILE?7:10);            // 帯外側
+  const R_REG_IN  = R_INNER+R_BAR_MAX+(IS_MOBILE?108:58);   // 帯内側（pref ラベルより外）
+  const R_REG_OUT = R_REG_IN+(IS_MOBILE?10:10);             // 帯外側
   const R_REG_LBL = R_REG_OUT+20;           // ラベル弧半径
   const R_DIV_IN  = R_INNER-2;              // 地域区切り内端
   const R_DIV_OUT = R_REG_OUT+4;            // 地域区切り外端
