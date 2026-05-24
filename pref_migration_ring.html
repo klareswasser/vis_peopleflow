@@ -25,7 +25,7 @@
   #app{display:flex;height:100vh;width:100vw}
   #stage{flex:1;min-width:0;position:relative;overflow:hidden}
   #panel{
-    flex:0 0 360px;
+    flex:0 0 380px;
     margin:16px 16px 16px 0;
     border-radius:24px;
     border:.5px solid rgba(255,255,255,.08);
@@ -264,7 +264,7 @@
   .flow-list::-webkit-scrollbar-track{background:transparent}
   .flow-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border:2px solid transparent;background-clip:padding-box;border-radius:999px}
   .flow-list::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.25);border:2px solid transparent;background-clip:padding-box}
-  .flow-row{position:relative;font-size:.85rem;padding:9px 12px;border-radius:8px;overflow:hidden;cursor:default;letter-spacing:-.01em;background:rgba(255,255,255,.02)}
+  .flow-row{position:relative;flex-shrink:0;white-space:nowrap;font-size:.85rem;padding:9px 12px;border-radius:8px;overflow:hidden;cursor:default;letter-spacing:-.01em;background:rgba(255,255,255,.02)}
   .flow-row .bar{position:absolute;left:0;top:0;bottom:0;opacity:.22}
   .flow-row .bar.pos{background:var(--pos)}
   .flow-row .bar.neg{background:var(--neg)}
