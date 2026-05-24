@@ -22,17 +22,26 @@
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
   }
-  #app{display:grid;grid-template-columns:1fr 360px;height:100vh;width:100vw}
-  #stage{position:relative;overflow:hidden}
+  #app{display:flex;height:100vh;width:100vw}
+  #stage{flex:1;min-width:0;position:relative;overflow:hidden}
   #panel{
-    background:rgba(11,13,22,.72);
-    border-left:.5px solid rgba(255,255,255,.08);
+    flex:0 0 360px;
+    margin:16px 16px 16px 0;
+    border-radius:24px;
+    border:.5px solid rgba(255,255,255,.08);
+    background:rgba(20,22,32,.65);
+    box-shadow:0 24px 48px rgba(0,0,0,.35), 0 0 0 .5px rgba(255,255,255,.05);
     padding:28px 24px 22px;
     display:flex;flex-direction:column;gap:16px;
-    backdrop-filter:saturate(180%) blur(20px);
-    -webkit-backdrop-filter:saturate(180%) blur(20px);
+    backdrop-filter:saturate(200%) blur(24px);
+    -webkit-backdrop-filter:saturate(200%) blur(24px);
     overflow-y:auto;
   }
+  /* MacOS Scrollbar */
+  #panel::-webkit-scrollbar { width: 14px; }
+  #panel::-webkit-scrollbar-track { background: transparent; }
+  #panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border: 4px solid rgba(0,0,0,0); background-clip: padding-box; border-radius: 999px; }
+  #panel::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.25); border: 4px solid rgba(0,0,0,0); background-clip: padding-box; }
   /* ── タイトル & 凡例（Apple HIG: Large Title 風） ── */
   .panel-header{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-bottom:14px;border-bottom:.5px solid rgba(255,255,255,.07)}
   .title{font-size:1.5rem;font-weight:700;letter-spacing:-.022em;color:#fff;line-height:1.15}
@@ -159,8 +168,10 @@
   .flow-section h4.pos{color:var(--pos-d)}
   .flow-section h4.neg{color:var(--neg-d)}
   .flow-list{display:flex;flex-direction:column;gap:1px;max-height:180px;overflow-y:auto;background:rgba(255,255,255,.03);border-radius:10px;padding:3px}
-  .flow-list::-webkit-scrollbar{width:3px}
-  .flow-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:2px}
+  .flow-list::-webkit-scrollbar{width:12px}
+  .flow-list::-webkit-scrollbar-track{background:transparent}
+  .flow-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border:3px solid transparent;background-clip:padding-box;border-radius:999px}
+  .flow-list::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.25);border:3px solid transparent;background-clip:padding-box}
   .flow-row{position:relative;font-size:.8rem;padding:7px 10px;border-radius:7px;overflow:hidden;cursor:default;letter-spacing:-.01em}
   .flow-row .bar{position:absolute;left:0;top:0;bottom:0;opacity:.22}
   .flow-row .bar.pos{background:var(--pos)}
@@ -183,7 +194,7 @@
       letter-spacing:-.01em;
       -webkit-font-smoothing:antialiased;
     }
-    #app{grid-template-columns:1fr;grid-template-rows:auto auto auto;height:auto;min-height:100vh}
+    #app{display:flex;flex-direction:column;height:auto;min-height:100vh}
     /* iOS large-title 風ヘッダー */
     #mobile-header{
       display:flex;align-items:baseline;justify-content:space-between;gap:8px;
@@ -207,7 +218,8 @@
     #stage svg{width:100%;height:100%}
     /* パネル＝iOS グループドリスト的な背景 */
     #panel{
-      max-height:none;border-left:none;border-top:.5px solid rgba(255,255,255,.06);
+      flex:none;width:auto;margin:0;border-radius:0;box-shadow:none;
+      max-height:none;border:none;border-top:.5px solid rgba(255,255,255,.06);
       padding:16px 16px 32px;gap:14px;
       background:rgba(8,9,14,.92);
     }
