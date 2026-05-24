@@ -185,7 +185,7 @@
     #app{grid-template-columns:1fr;grid-template-rows:auto auto auto;height:auto;min-height:100vh}
     /* iOS large-title 風ヘッダー */
     #mobile-header{
-      display:block;
+      display:flex;align-items:baseline;justify-content:space-between;gap:8px;
       background:rgba(11,13,22,.72);
       border-bottom:.5px solid rgba(255,255,255,.08);
       padding:18px 20px 14px;
@@ -195,10 +195,11 @@
     }
     #mobile-header h1{
       font-size:1.55rem;font-weight:700;letter-spacing:-.02em;color:#fff;
-      margin:0 0 4px;line-height:1.15;
+      margin:0;line-height:1.15;flex-shrink:0;
     }
     #mobile-header .mh-sub{
-      font-size:.78rem;color:rgba(235,235,245,.6);letter-spacing:0;line-height:1.4;font-weight:400;
+      font-size:.72rem;color:rgba(235,235,245,.5);letter-spacing:0;line-height:1.4;font-weight:400;
+      text-align:right;white-space:nowrap;
     }
     #mobile-header .mh-sub b{color:rgba(235,235,245,.85);font-weight:500}
     #stage{height:100vw;min-height:0;aspect-ratio:1/1;padding:0}
