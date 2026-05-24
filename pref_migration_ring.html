@@ -236,7 +236,7 @@
   .stat-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
   .stat-head-l{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;min-width:0}
   .stat-name{font-size:1.55rem;font-weight:600;letter-spacing:-.02em;color:#fff}
-  .stat-region{font-size:.78rem;color:rgba(235,235,245,.55);letter-spacing:0;font-weight:400;white-space:nowrap}
+  .stat-year-chip{font-size:.75rem;color:rgba(255,255,255,.9);background:rgba(255,255,255,.15);padding:3px 8px;border-radius:6px;letter-spacing:0;font-weight:500;white-space:nowrap}
   .net-big{
     font-family:-apple-system,"SF Pro Display",sans-serif;
     font-size:1.5rem;font-weight:600;letter-spacing:-.02em;
@@ -358,7 +358,7 @@
     .stat-head{gap:8px}
     .stat-head-l{gap:8px}
     .stat-name{font-size:1.5rem;font-weight:600;letter-spacing:-.02em;color:#fff}
-    .stat-region{font-size:.8rem;color:rgba(235,235,245,.55);letter-spacing:0;font-weight:400}
+    .stat-year-chip{font-size:.75rem;padding:3px 8px;border-radius:6px;}
     .net-big{
       font-family:-apple-system,"SF Pro Display",sans-serif !important;
       font-size:1.35rem !important;font-weight:600;letter-spacing:-.02em;
@@ -835,7 +835,7 @@
         <div class="stat-head">
           <div class="stat-head-l">
             <span class="stat-name">${name}</span>
-            <span class="stat-region">${reg}　${year}年</span>
+            <span class="stat-year-chip">${year}年</span>
           </div>
           <div class="net-big ${netCls}">${netStr}</div>
         </div>
