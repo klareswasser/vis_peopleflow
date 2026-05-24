@@ -50,12 +50,7 @@
     backdrop-filter:blur(8px);
     z-index:5;
   }
-  #year-display{
-    font-family:'Helvetica Neue',sans-serif;
-    font-size:1.6rem;font-weight:200;letter-spacing:.08em;
-    color:#fff;min-width:88px;text-align:center;
-  }
-  #year-display .y-sub{font-size:.55rem;color:var(--mute);letter-spacing:.2em;display:block;margin-top:-4px}
+  #year-display{display:none}
   #slider{
     -webkit-appearance:none;appearance:none;
     width:280px;height:4px;background:#222633;border-radius:2px;outline:none;cursor:pointer;
@@ -195,7 +190,6 @@
     #panel > div:first-child{display:none} /* PC用タイトルをスマホでは隠す */
     .sub{font-size:.65rem}
     #controls{padding:8px 14px;gap:10px;bottom:10px}
-    #year-display{font-size:1.3rem;min-width:64px}
     .flow-list{max-height:200px}
     .node-label{font-size:24px;letter-spacing:0;font-weight:500;pointer-events:auto;cursor:pointer}
     .node.hilite .node-label{font-size:27px}
@@ -206,9 +200,6 @@
     #mobile-header{padding:12px 14px 10px}
     #mobile-header h1{font-size:.95rem}
     #mobile-header .mh-sub{font-size:.62rem}
-    #year-display{font-size:1.15rem;min-width:56px}
-    #year-display .y-sub{font-size:.5rem}
-
     .node-label{font-size:26px}
     .node.hilite .node-label{font-size:29px}
   }
@@ -227,7 +218,7 @@
     <div id="controls">
       <button class="btn" id="play" title="再生/停止" style="display:none">▶</button>
       <input type="range" id="slider" min="0" max="0" step="1" value="0" style="display:none">
-      <div id="year-display">2025<span class="y-sub">YEAR</span></div>
+
       <div class="mode-toggle" id="mode-toggle" style="display:none">
         <button data-mode="net" class="active">純流動</button>
         <button data-mode="gross">総量</button>
