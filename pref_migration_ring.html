@@ -849,8 +849,10 @@
 
 
   // ── スライダー ──
-  slider.max=YEARS.length-1;
-  slider.value=YEARS.length-1;
+  let defaultIdx = YEARS.indexOf(2025);
+  if (defaultIdx === -1) defaultIdx = YEARS.length - 1;
+  slider.max = YEARS.length - 1;
+  slider.value = defaultIdx;
   slider.addEventListener('input',()=>{
     renderYear(YEARS[+slider.value]);
     updateYearTabs();
@@ -912,7 +914,7 @@
   });
 
   // 初期描画
-  renderYear(YEARS[YEARS.length-1]);
+  renderYear(YEARS[defaultIdx]);
   updateYearTabs();
 
   function mk(tag,attrs){
