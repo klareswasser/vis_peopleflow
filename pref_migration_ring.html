@@ -25,8 +25,8 @@
   #panel{
     background:rgba(11,13,22,.85);
     border-left:1px solid var(--line);
-    padding:22px 20px 18px;
-    display:flex;flex-direction:column;gap:14px;
+    padding:18px 18px 14px;
+    display:flex;flex-direction:column;gap:10px;
     backdrop-filter:blur(8px);
     overflow-y:auto;
   }
@@ -159,8 +159,8 @@
   .flow-row .v{font-family:monospace;color:#e0e0e0}
   .placeholder{
     flex:1;display:flex;align-items:center;justify-content:center;text-align:center;
-    color:var(--dim);font-size:.72rem;line-height:1.7;border:1px dashed var(--line);
-    border-radius:10px;padding:30px 20px;
+    color:var(--dim);font-size:.72rem;line-height:1.8;border:1px dashed var(--line);
+    border-radius:10px;padding:20px 14px;
   }
   /* スマホ用ヘッダー（PCでは非表示） */
   #mobile-header{display:none}
@@ -228,28 +228,16 @@
   </div>
   <aside id="panel">
     <div>
-      <div class="title">都道府県間 人口移動</div>
-      <div class="sub">住民基本台帳人口移動報告 2025年<br>外周バーの高さ＝<b style="color:#fff">転入超過|転出超過</b> の絶対値</div>
+      <div class="title">都道府県間人口移動</div>
+      <div class="sub">住民基本台帳 2010–2025</div>
     </div>
     <div class="legend">
-      <div class="row"><div class="swatch pos"></div>転入超過（人口増）</div>
-      <div class="row"><div class="swatch neg"></div>転出超過（人口減）</div>
-      <div class="row" id="legend-flow">
-        <svg width="34" height="10" style="flex-shrink:0">
-          <defs><linearGradient id="lg-legend" x1="0" y1="0" x2="30" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#dde1ff" stop-opacity="0.05"/><stop offset="100%" stop-color="#dde1ff" stop-opacity="1"/></linearGradient></defs>
-          <line x1="2" y1="5" x2="32" y2="5" stroke="url(#lg-legend)" stroke-width="3" stroke-linecap="round"/>
-          <line id="lg-dash" x1="2" y1="5" x2="32" y2="5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 10"><animate attributeName="stroke-dashoffset" from="0" to="-14" dur="1.2s" repeatCount="indefinite"/></line>
-        </svg>OD方向（濃い端・流れる方向＝行先）
-      </div>
-      <div class="row"><span style="font-family:monospace">―</span>線の太さ ∝ 流動量</div>
-      <div class="row" style="color:#ffd34d;margin-top:6px">💡 都道府県をホバーで流動表示</div>
-      <div class="row" style="color:var(--mute);margin-top:4px;line-height:1.5">表示は<b style="color:#fff">純流動</b>（両方向の差分）のみ</div>
+      <div class="row"><div class="swatch pos"></div>転入超過</div>
+      <div class="row"><div class="swatch neg"></div>転出超過</div>
+      <div class="row" style="color:var(--mute);margin-top:4px;font-size:.65rem">外周バー＝純転入出超の絶対値</div>
     </div>
     <div id="detail-host">
-      <div class="placeholder">
-        外周の都道府県に<br>マウスを<b style="color:#fff">ホバー</b>すると<br>
-        流入元・流出先と<br>主要フローが表示されます
-      </div>
+      <div class="placeholder">都道府県をホバーすると<br>詳細が表示されます</div>
     </div>
   </aside>
 </div>
@@ -613,10 +601,7 @@
 
   function showPlaceholder(){
     detailHost.innerHTML=`
-      <div class="placeholder">
-        外周の都道府県に<br>マウスを<b style="color:#fff">ホバー</b>すると<br>
-        流入元・流出先と<br>主要フローが表示されます
-      </div>`;
+      <div class="placeholder">都道府県をホバーすると<br>詳細が表示されます</div>`;
   }
 
   function showDetail(i, ins, outs, isNet){
@@ -634,25 +619,21 @@
     const fmt=v=>(isNet&&v>0?'+':'')+v.toLocaleString();
     const li=insSorted.map(([oi,v])=>`<div class="flow-row"><div class="bar pos" style="width:${100*v/mxIn}%"></div><div class="content"><span>${PREFS[oi]} <span style="color:#888">→</span></span><span class="v">${fmt(v)}</span></div></div>`).join('');
     const lo=outsSorted.map(([di,v])=>`<div class="flow-row"><div class="bar neg" style="width:${100*v/mxOut}%"></div><div class="content"><span><span style="color:#888">→</span> ${PREFS[di]}</span><span class="v">${fmt(v)}</span></div></div>`).join('');
-    const headIn  = isNet ? '純流入 TOP8' : '流入元 TOP8';
-    const headOut = isNet ? '純流出 TOP8' : '流出先 TOP8';
-    const subIn   = isNet ? '勝ち方向＝転入超過' : 'どこから来たか';
-    const subOut  = isNet ? '勝ち方向＝転出超過' : 'どこへ行ったか';
     detailHost.innerHTML=`
       <div class="stat-box">
         <div class="stat-name">${name}</div>
-        <div class="stat-region">${reg}地方 ・ ${year}年 ・ ${isNet?'純流動':'総量'}モード</div>
+        <div class="stat-region">${reg}地方　${year}年</div>
         <div class="net-big ${netCls}">${netStr}</div>
-        <div class="net-cap">${net>=0?'TRANSIENT INFLOW':'TRANSIENT OUTFLOW'} (NET)</div>
+        <div class="net-cap">${net>=0?'転入超過（純）':'転出超過（純）'}</div>
         <div class="io-row">
           <div class="io-cell"><div class="io-cap">総流入</div><div class="io-val pos">${inSum.toLocaleString()}</div></div>
           <div class="io-cell"><div class="io-cap">総流出</div><div class="io-val neg">${outSum.toLocaleString()}</div></div>
         </div>
       </div>
       <div class="flow-section">
-        <h4 class="pos"><span>${headIn}</span><span>${subIn}</span></h4>
+        <h4 class="pos">流入元 TOP 8</h4>
         <div class="flow-list">${li||'<div style="padding:8px;color:#666;font-size:.7rem">該当なし</div>'}</div>
-        <h4 class="neg"><span>${headOut}</span><span>${subOut}</span></h4>
+        <h4 class="neg">流出先 TOP 8</h4>
         <div class="flow-list">${lo||'<div style="padding:8px;color:#666;font-size:.7rem">該当なし</div>'}</div>
       </div>`;
   }
