@@ -325,7 +325,7 @@
 
   // ジオメトリ（スマホでは内側の円を小さく、ラベルスペースを広く取る）
   const IS_MOBILE = window.matchMedia('(max-width:900px)').matches;
-  const R_INNER = IS_MOBILE ? 220 : 300;     // 外周バーの内側
+  const R_INNER = IS_MOBILE ? 240 : 300;     // 外周バーの内側
   const R_BAR_MAX = IS_MOBILE ? 50 : 70;     // 最大バー高
   const R_LABEL = R_INNER + R_BAR_MAX + (IS_MOBILE ? 12 : 18);
   const R_FLOW = R_INNER - 6;// フロー終端
